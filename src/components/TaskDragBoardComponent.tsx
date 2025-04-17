@@ -176,7 +176,7 @@ const TaskDragBoardComponent: React.FC<TaskDragBoardComponentProps> = ({ tasks, 
           <Column
             key={column}
             id={column}
-            title={column}
+            title={column} 
             tasks={tasks.filter((task) => task.status === column)}
           />
         ))}

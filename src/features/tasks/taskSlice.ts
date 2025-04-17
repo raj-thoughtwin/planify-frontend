@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Task, TaskBase, TaskCreate } from "../../utils/types/task.types";
+import { Task, TaskCreate } from "../../utils/types/task.types";
 import { createTask, getTasks, updateTaskStatus } from "./taskAPI";
 
 interface TaskState {
@@ -24,6 +24,7 @@ export const fetchTasks = createAsyncThunk(
       }
       return rejectWithValue(response.message || "Failed to fetch tasks");
     } catch (error: any) {
+      console.error("Error fetching tasks:", error);
       return rejectWithValue(error.message || "Failed to fetch tasks");
     }
   }
@@ -31,7 +32,7 @@ export const fetchTasks = createAsyncThunk(
 
 export const addTask = createAsyncThunk(
   "tasks/addTask",
-  async (taskData: TaskBase, { rejectWithValue }) => {
+  async (taskData: TaskCreate, { rejectWithValue }) => {
     try {
       const response: any = await createTask(taskData);
       if (response.success) {

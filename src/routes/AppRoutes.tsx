@@ -6,6 +6,7 @@ import Register from "../components/auth/RegisterComponent";
 import Settings from "../pages/Settings";
 import ProtectedRoute from "./ProtectedRoute";
 import ChatComponent from "../components/ChatComponent";
+import CreateTask from "../pages/CreateTask";
 
 const AppRoutes = () => {
   return (
@@ -22,6 +23,14 @@ const AppRoutes = () => {
           element={
             <Layout>
               <Dashboard />
+            </Layout>
+          }
+        />
+         <Route
+          path="/create-task"
+          element={
+            <Layout>
+              <CreateTask />
             </Layout>
           }
         />

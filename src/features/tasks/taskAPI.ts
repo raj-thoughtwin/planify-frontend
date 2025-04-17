@@ -1,20 +1,7 @@
 import axios from 'axios';
+import { TaskCreate } from '../../utils/types/task.types';
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
-// Types
-export interface TaskCreate {
-  text: string;
-  description: string;
-  type: 'bug' | 'task' | 'story';
-  priority: 'high' | 'medium' | 'low';
-  assignee: string;
-  status: 'To Do' | 'In Progress' | 'Code Review' | 'QA (Deployed on Dev)';
-}
 
-export interface Task extends TaskCreate {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-}
 
 // API functions
 export const createTask = async (taskData: TaskCreate) => {

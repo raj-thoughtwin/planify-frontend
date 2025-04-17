@@ -22,14 +22,14 @@ import { showSuccessToast, showErrorToast } from '../utils/toast';
 const CreateTask: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const { loading, error } = useSelector((state: RootState) => state.tasks || { loading: false, error: null });
+  const { loading } = useSelector((state: RootState) => state.tasks || { loading: false });
 
   const [formData, setFormData] = useState<TaskFormData>({
-    text: '',
+    title: '',
     description: '',
     type: TaskType.TASK,
     priority: TaskPriority.MEDIUM,
-    assignee: '',
+    assignedTo: '',
   });
 
   const handleChange = (
@@ -70,8 +70,8 @@ const CreateTask: React.FC = () => {
           <TextField
             fullWidth
             label="Title"
-            name="text"
-            value={formData.text}
+            name="title"
+            value={formData.title}
             onChange={handleChange}
             sx={{ mb: 3 }}
             required
@@ -131,13 +131,13 @@ const CreateTask: React.FC = () => {
 
           <TextField
             fullWidth
-            label="Assignee"
-            name="assignee"
-            value={formData.assignee}
+            label="Assigned To"
+            name="assignedTo"
+            value={formData.assignedTo}
             onChange={handleChange}
             sx={{ mb: 4 }}
             required
-            placeholder="Enter assignee name"
+            placeholder="Enter assignedTo name"
             disabled={loading}
           />
 

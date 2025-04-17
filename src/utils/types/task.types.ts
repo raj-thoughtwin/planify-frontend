@@ -19,12 +19,11 @@ export interface AssigneeDetails {
 
 
 export interface TaskCreate {
-  text: string;
   title: string;
   description: string;
   type: TaskType;
   priority: TaskPriority;
-  assignedTo: string;
+  assignedTo: any;
   status: TaskStatus;
   assigneeDetails?: AssigneeDetails;
 }
@@ -37,11 +36,11 @@ export interface Task extends TaskCreate {
 }
 
 export interface TaskFormData {
-  text: string;
+  title: string;
   description: string;
   type: TaskType;
   priority: TaskPriority;
-  assignee: string;
+  assignedTo: string;
 }
 
 // Task type enum
